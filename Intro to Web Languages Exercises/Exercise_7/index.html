@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Item Calculator</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            background-size: cover;
+            align-items: center;
+            padding-top: 2%;
+            padding-bottom: 60%;
+            text-align: center;
+        }
+        .input-elments {
+            margin-top: 10%;
+           position: relative;
+           
+        }
+
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="input-elments">
+    <input type="text" id="txt-price" placeholder="Enter the price of the item">
+    <input type="text" id="txt-quantity" placeholder="Enter the quanity of the item">
+    <button id="btn-submit">Calculate</button>
+    <div id="output"></div>
+</div>
+</div>
+<script>
+    // Get references to the input elements and button
+    var priceInput = document.getElementById('txt-price'); // Get the input for item price
+    var quantityInput = document.getElementById('txt-quantity'); // Get the input for item quantity
+    var submitBtn = document.getElementById('btn-submit'); // Get the submit button
+    var output = document.getElementById('output'); // Get the output element where the result will be displayed
+  
+    // Add a click event listener to the submit button
+    submitBtn.addEventListener('click', function () {
+      // Retrieve the values entered by the user
+      var price = priceInput.value; // Get the value entered for item price
+      var quantity = quantityInput.value; // Get the value entered for item quantity
+      
+      // Convert the input values to numbers
+      price = +price; // Convert the price to a number
+      quantity = +quantity; // Convert the quantity to a number
+  
+      // Check if the input values are valid numbers
+      if (Number.isNaN(price) || Number.isNaN(quantity)) {
+        // If either input is not a valid number, display an error message
+        output.innerHTML = 'Invalid input'; // Display 'Invalid input' in the output element
+        return; // Exit the function
+      }
+  
+      // Calculate the total price by multiplying the price and quantity
+      var totalPrice = price * quantity; // Calculate the total price
+      totalPrice = Math.round(totalPrice * 100) / 100; // Round the total price to two decimal places
+  
+      // Display the result in the output element
+      output.innerHTML = quantity + ' items at $' + totalPrice + ' each is $' + totalPrice; // Display the total price
+    });
+  </script>
+  
+</body>
+</html>
